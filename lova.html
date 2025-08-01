@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Everything ❤️</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-start: #fff0f3;
+            --bg-end: #ffd8e0;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --primary-pink: #e91e63;
+            --text-dark: #4b3f3f;
+            --text-light: #776262;
+            --shadow-color: rgba(233, 30, 99, 0.15);
+            --font-heading: 'Great Vibes', cursive;
+            --font-subheading: 'Dancing Script', cursive;
+            --font-body: 'Lora', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 2rem;
+            color: white;
+            opacity: 0.15;
+            animation: floatUp 20s infinite linear;
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(-105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .main-container {
+            max-width: 700px;
+            width: 90%;
+            padding: 2rem 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 35px var(--shadow-color);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: slideUp 1s forwards ease-out;
+        }
+
+        .header { animation-delay: 0.2s; }
+        .love-letter { animation-delay: 0.4s; }
+        .photo-gallery { animation-delay: 0.6s; }
+        .playlist-section { animation-delay: 0.8s; }
+        .surprise-section { animation-delay: 1s; }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .main-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--primary-pink);
+            text-align: center;
+            text-shadow: 2px 2px 10px var(--shadow-color);
+        }
+
+        .subtitle, .section-title {
+            font-family: var(--font-subheading);
+            font-size: 1.8rem;
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .header {
+            background: none;
+            box-shadow: none;
+            border: none;
+            backdrop-filter: none;
+            margin-bottom: 0;
+        }
+
+        .love-letter h2 {
+            font-family: var(--font-subheading);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-pink);
+        }
+
+        .love-letter p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .signature {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            text-align: right;
+            margin-top: 1.5rem;
+            color: var(--primary-pink);
+        }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px var(--shadow-color);
+        }
+
+        .slides {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            width: 33.333%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 1.5rem 1rem 1rem;
+            text-align: center;
+            font-family: var(--font-subheading);
+            font-size: 1.2rem;
+        }
+
+        .surprise-section {
+            text-align: center;
+        }
+
+        .surprise-btn {
+            font-family: var(--font-subheading);
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(45deg, var(--primary-pink), #ff79a6);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .surprise-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.5);
+        }
+
+        .surprise-message {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s ease-out;
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .surprise-message.show {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 2rem;
+        }
+        .surprise-message p {
+            font-style: italic;
+            color: var(--text-dark);
+        }
+        .surprise-message span {
+            display: block;
+            margin-top: 0.5rem;
+            font-style: normal;
+        }
+
+        .music-toggle-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        .music-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 600px) {
+            .main-title { font-size: 2.5rem; }
+            .subtitle, .section-title { font-size: 1.5rem; }
+            .card { padding: 1.5rem; }
+            .love-letter h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hearts-container"></div>
+
+    <div class="main-container">
+
+        <header class="header">
+            <h1 class="main-title">Happy Girlfriend Day, My Love</h1>
+            <p class="subtitle">Celebrating you today, and always.</p>
+        </header>
+
+        <section class="card love-letter">
+            <h2>To the One Who Has My Heart</h2>
+            <p>
+                Every day, I find new reasons to fall in love with you. Your smile is the brightest part of my day, and your laughter is my favorite sound. Thank you for being my partner, my best friend, and my greatest adventure. Life with you is more beautiful than I ever imagined.
+            </p>
+            <p>
+                You're the reason for my happiness, the anchor in my life, and the love of my life. I cherish every single moment we share.
+            </p>
+            <div class="signature">Forever Yours, Bhavesh</div>
+        </section>
+
+
+
+        <section class="card surprise-section">
+             <h2 class="section-title">And a little surprise... 💝</h2>
+            <button class="surprise-btn" id="surpriseBtn">Click Me!</button>
+            <div class="surprise-message" id="surpriseMessage">
+                <p>"In your light, I learn how to love."</p>
+                <span>- Likki (and me!)</span>
+                <p>You are my light. I love you!</p>
+            </div>
+        </section>
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/02/12/audio_73b53c6e5a.mp3?filename=cinematic-mood-main-8526.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-toggle" class="music-toggle-btn">🔇</button>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const heartsContainer = document.querySelector('.hearts-container');
+            function createHearts() {
+                for (let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '❤';
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.animationDuration = `${Math.random() * 5 + 15}s`;
+                    heart.style.animationDelay = `${Math.random() * 5}s`;
+                    heartsContainer.appendChild(heart);
+                }
+            }
+
+            const slidesContainer = document.querySelector('.slides');
+            const slideCount = document.querySelectorAll('.slide').length;
+            let currentSlide = 0;
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                const offset = -currentSlide * (100 / 3); 
+                slidesContainer.style.transform = `translateX(${offset}%)`;
+            }
+            
+            const surpriseBtn = document.getElementById('surpriseBtn');
+            const surpriseMessage = document.getElementById('surpriseMessage');
+
+            surpriseBtn.addEventListener('click', () => {
+                surpriseMessage.classList.toggle('show');
+            });
+
+            const music = document.getElementById('background-music');
+            const musicToggle = document.getElementById('music-toggle');
+            let isPlaying = false;
+            music.volume = 0.3;
+
+            musicToggle.addEventListener('click', () => {
+                if (isPlaying) {
+                    music.pause();
+                    musicToggle.textContent = '🔇';
+                } else {
+                    music.play().catch(error => console.log("Audio autoplay was prevented."));
+                    musicToggle.textContent = '🎵';
+                }
+                isPlaying = !isPlaying;
+            });
+
+            createHearts();
+            if(slideCount > 1) {
+                setInterval(nextSlide, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
